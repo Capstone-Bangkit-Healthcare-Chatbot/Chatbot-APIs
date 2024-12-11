@@ -1,1 +1,1 @@
-# Chatbot-APIs
+# Chatbot & Artikel-APIs
