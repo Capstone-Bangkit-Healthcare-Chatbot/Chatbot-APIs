@@ -29,5 +29,55 @@
 
 # Deployment
 ---
+1. Docker Image Creation:
+   * Build three Docker images:
+     - chatbot-api: Contains the machine learning model for the chatbot.
+     - node-service2: Contains the API for the chatbot.
+     - gcr.io/api-articles: Contains the API for article management.
+2. Push to Artifact Registry:
+These three Docker images are then pushed to Artifact Registry, a secure and managed Google Cloud artifact storage service.
+3. Deployment to Cloud Run:
+Each Docker image is deployed to Cloud Run as a service. The following url is then obtained:
+- **Chatbot API:** [node-service2 API](https://node-service2-image-333011856334.asia-southeast2.run.app)
+- **Article API:** [Article API](https://article-api-258958241249.us-central1.run.app)
 
+# API Endpoint
+---
+## Endpoint Chatbot
+**POST /chat**
+  * Description:** Send a message to the chatbot.
+  * Request Body:
+    * `message`: The message you want to send.
+  * Response:
+    * The reply message from the chatbot.
 
+* **GET /history**
+  * Response:
+    * id: A unique identifier for the conversation entry.
+    * input: The user's input message.
+    * response: The chatbot's response to the user's input.
+    * timestamp: The timestamp of the conversation.
+
+## Article endpoint
+**POST /api/articles**
+  * Description:** Creates a new article.
+  * Request Body:
+    * `id`: A unique identifier for the article entry.
+    * `title`: The title of the article.
+    * `content`: The content of the article.
+  * Response: ID, title, and content of the newly created article.
+
+* **GET /api/articles**
+  * Response: Array of objects, each object contains the ID, title, and content of the article.
+
+* **GET /api/articles/:id**
+  * Response: An object containing the ID, title, and content of the article.
+
+* **PUT /api/articles/:id**
+  * Request Body:
+    * `title` (optional): New title.
+    * `content` (optional): New content.
+  * Response: The updated article object.
+
+* **DELETE /api/articles/:id**
+  * Response: Confirmation message of successful deletion.
