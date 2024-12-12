@@ -27,7 +27,7 @@
 ---
 ![capstone](https://github.com/user-attachments/assets/a67c3f89-e981-42d6-ac3a-4ea6b6243e1e)
 
-# Cloud Architecture
+# Deployment
 ---
 
 
